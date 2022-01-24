@@ -3,6 +3,7 @@ use glob::glob;
 use std::path::Path;
 use std::fs;
 use rayon::prelude::*;
+use ansi_term::Colour::Green;
 
 fn run_command(input_file: &str, output_file: &str) {
    let _output = Command::new("sox")
@@ -37,6 +38,8 @@ fn main() {
 
     _files.into_par_iter().for_each(|file| {
         loop_surround(&file);
+        println!(" * {}", 
+                 Green.paint(file.as_str().replace("\\", "").trim_matches('"')));
     })
 
 }
