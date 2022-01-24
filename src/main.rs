@@ -37,9 +37,9 @@ fn main() {
     }
 
     _files.into_par_iter().for_each(|file| {
-        loop_surround(&file);
-        println!(" * {}", 
-                 Green.paint(file.as_str().replace("\\", "").trim_matches('"')));
+        let mut filename = file.replace("\\", "");
+        filename = filename.trim_matches('"').to_string();
+        loop_surround(&filename);
+        println!(" * {}", Green.paint(filename));
     })
-
 }
