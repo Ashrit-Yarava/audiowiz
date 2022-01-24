@@ -5,7 +5,6 @@ edition = "2021"
 authors = [ "Ashrit Yarava <ashdragon95@gmail.com>" ]
 description = "Apply some nice audio effects to .mp3 files in the current directory."
 license = "MIT"
-license-file = "LICENSE"
 homepage = "https://github.com/Ashrit-Yarava/audiowiz"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
