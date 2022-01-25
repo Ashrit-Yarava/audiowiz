@@ -6,6 +6,8 @@ use glob::glob;
 use ansi_term::Colour::Green;
 use ansi_term::Colour::Red;
 
+use id3::{Tag, Version};
+
 fn run_command(input_file: &str, output_file: &str) {
     // Run the SoX command.
     let _output = Command::new("sox")
@@ -38,6 +40,13 @@ pub fn get_files(directory: &str) -> Vec<String> {
     return files;
 }
 
+
+pub fn copy_tag(input_file: &str, output_file: &str) -> Result<(), Box<dyn std::error::Error>> {
+    let result = Tag::read_from_path(input_file)?;
+    result.write_to_path(output_file, Version::Id3v24)?;
+    Ok(())
+}
+
 pub fn command_loop(input_file: &str, directory: &str) {
     let result = Path::new(input_file).file_name();
     if let Some(path) = result {
@@ -47,6 +56,7 @@ pub fn command_loop(input_file: &str, directory: &str) {
             return;
         }
         run_command(input_file, &output_file);
+        let _ = copy_tag(input_file, &output_file);
         println!(" * {}", Green.paint(output_file)); // Green Color for converted.
     } else {
         return;

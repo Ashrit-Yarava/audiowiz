@@ -1,6 +1,6 @@
 [package]
 name = "audiowiz"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 authors = [ "Ashrit Yarava <ashdragon95@gmail.com>" ]
 description = "Apply some nice audio effects to .mp3 files in the current directory."
@@ -14,3 +14,4 @@ glob = "0.3.0"
 rayon = "1.5"
 ansi_term = "0.12.1"
 clap = { version = "3.0.12", features = ["derive"] }
+id3 = "0.6.1"

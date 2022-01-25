@@ -1,1 +1,5 @@
-/target
+target/
+wizzed/
+temp/
+Cargo.lock
+.DS_Store
